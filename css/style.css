@@ -1,0 +1,18 @@
+body {
+	font-family: 'Noto Sans', sans-serif;
+}
+
+.sidebar {
+	width: 350px;
+}
+.sidebar .header {
+	margin: 50% 2em 0;
+	text-align: right;
+}
+.sidebar .pure-menu {
+	border: 0;
+}
+
+.content {
+	width: 960px;
+}
