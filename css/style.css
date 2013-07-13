@@ -62,17 +62,20 @@ a:hover {
 
 .content {
 	display: block;
-	padding: 2em;
 }
 
 .breadcumbs {
+	margin: 2em;
 	padding: 0;
-	margin-top: 0;
 }
 
 .breadcumbs li {
 	list-style: none;
 	display: inline;
+}
+
+.post {
+	margin: 2em;
 }
 
 .post-header h2 a {
