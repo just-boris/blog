@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+    <link href="http://css.cdn.tl/normalize.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Noto+Sans:100,400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{site.baseurl }}/css/style.css">
     <!--[if lt IE 9]>
@@ -12,18 +12,18 @@
   </head>
 
   <body>
-    <div class="pure-g-r wrap">
-      <div class="pure-u sidebar">
-        <header class="header pure-u-1">
+    <div class="wrap">
+      <div class="sidebar">
+        <header class="header">
             <hgroup>
-                <h1>Catatron</h1>
+                <h1 class="title">Catatron</h1>
                 <h2>Блог о котах и фронтенд-разработке</h2>
             </hgroup>
         </header>
-        <nav class="pure-menu pure-menu-open">
-          <ul>
+        <nav>
+          <ul class="blog_nav">
               <li><a href="#">Про блог</a></li>
-              <li class="pure-menu-heading">Последние посты:</li>
+              <li class="blog_nav_header">Последние посты:</li>
               <li><a href="#">Что может сделать кот, уснув на клавиатуре</a></li>
               <li><a href="#">Роль глажки в процессе релаксации</a></li>
               <li><a href="#">Можно ли кормить кота вискасом?</a></li>
@@ -32,84 +32,84 @@
           </ul>
         </nav>
       </div>
-      <div class="pure-u content">
+      <div class="content">
           <ul class="breadcumbs">
               <li><a href="/">Главная</a></li>
               <li class="separator">></li>
               <li class="active"><a href="#">Последние посты</a></li>
           </ul>
-          <section class="pure-u-1 post">
+          <section class="post">
               <header class="post-header">
-                  <h2 class="post-title pure-u-1"><a href="#">Что может сделать кот, уснув на клавиатуре</a></h2>
-                  <p class="post-meta pure-u-1">
+                  <h2 class="post-title"><a href="#">Что может сделать кот, уснув на клавиатуре</a></h2>
+                  <p class="post-meta">
                     <span class="post-date">10.07.2013</span>
                     <a class="post-category post-category-js" href="#">Cats</a>
                   </p>
               </header>
 
-              <div class="post-description pure-u-1">
+              <div class="post-description">
                   <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ну много всего короче...
                   </p>
               </div>
               <div class="article-cut"><a href="#">Читать далее...</a></div>
           </section>
-          <section class="pure-u-1 post">
+          <section class="post">
               <header class="post-header">
-                  <h2 class="post-title pure-u-1"><a href="#">Роль глажки в процессе релаксации</a></h2>
-                  <p class="post-meta pure-u-1">
+                  <h2 class="post-title"><a href="#">Роль глажки в процессе релаксации</a></h2>
+                  <p class="post-meta">
                     <span class="post-date">10.07.2013</span>
                     <a class="post-category post-category-js" href="#">Cats</a>
                   </p>
               </header>
 
-              <div class="post-description pure-u-1">
+              <div class="post-description">
                   <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. В общем, кто не гладит котов, тот нихрена не отдыхает...
                   </p>
               </div>
           </section>
-          <section class="pure-u-1 post">
+          <section class="post">
               <header class="post-header">
-                  <h2 class="post-title pure-u-1"><a href="#">Можно ли кормить кота вискасом?</a></h2>
-                  <p class="post-meta pure-u-1">
+                  <h2 class="post-title"><a href="#">Можно ли кормить кота вискасом?</a></h2>
+                  <p class="post-meta">
                     <span class="post-date">10.07.2013</span>
                     <a class="post-category post-category-js" href="#">Cats</a>
                     <a class="post-category post-category-css" href="#">Хавчик</a>
                   </p>
               </header>
 
-              <div class="post-description pure-u-1">
+              <div class="post-description">
                   <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Так что не поленитесь и сходите за нормальной рыбой и себе и ему...
                   </p>
               </div>
           </section>
-          <section class="pure-u-1 post">
+          <section class="post">
               <header class="post-header">
-                  <h2 class="post-title pure-u-1"><a href="#">Как научить кота не будить по утрам</a></h2>
-                  <p class="post-meta pure-u-1">
+                  <h2 class="post-title"><a href="#">Как научить кота не будить по утрам</a></h2>
+                  <p class="post-meta">
                     <span class="post-date">10.07.2013</span>
                     <a class="post-category post-category-js" href="#">Cats</a>
                   </p>
               </header>
 
-              <div class="post-description pure-u-1">
+              <div class="post-description">
                   <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Проще говоря, тапок еще никогда не подводил...
                   </p>
               </div>
           </section>
-          <section class="pure-u-1 post">
+          <section class="post">
               <header class="post-header">
-                  <h2 class="post-title pure-u-1"><a href="#">Как выбрать домик для кота</a></h2>
-                  <p class="post-meta pure-u-1">
+                  <h2 class="post-title"><a href="#">Как выбрать домик для кота</a></h2>
+                  <p class="post-meta">
                     <span class="post-date">10.07.2013</span>
                     <a class="post-category post-category-js" href="#">Cats</a>
                   </p>
               </header>
 
-              <div class="post-description pure-u-1">
+              <div class="post-description">
                   <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Итак, у вас уже есть коробка, зачем вам что-то еще...
                   </p>
