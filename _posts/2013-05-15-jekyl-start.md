@@ -1,6 +1,7 @@
 ---
-layout: default
+layout: post
 title: 1st post
+tags: [js]
 ---
 
 > I've cofigured Jekyl! Looks good!

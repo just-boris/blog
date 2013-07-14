@@ -23,13 +23,16 @@ a:hover {
 	background: #3A629C;
 }
 .sidebar .header {
-	color: #FFF;
 	margin: 50% 2em 0;
+}
+.sidebar .header a:hover {
+	text-decoration: none;
 }
 .sidebar .title {
 	font-size: 4em;
 }
 .sidebar h1, .sidebar h2 {
+	color: #FFF;
 	font-weight: 100;
 }
 
@@ -122,6 +125,6 @@ a:hover {
 .post-category-js {
 	background: #DF2D4F;
 }
-.post-category-css {
+.post-category-Cats {
 	background: #5aba59;
 }

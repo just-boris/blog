@@ -1,2 +1,3 @@
-baseurl:     /blog/
-permalink:   /:year/:month/:day/:title
+baseurl: /blog
+permalink: /:year/:month/:day/:title
+markdown: rdiscount
