@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link href="http://css.cdn.tl/normalize.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Noto+Sans:100,400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{site.baseurl}}/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | Catatron</title>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="sidebar">
+        <header class="header">
+          <a href="{{site.baseurl}}"><h1 class="title">Catatron</h1></a>
+        </header>
+        <nav>
+          <ul class="blog_nav">
+              <li><a href="#">Про блог</a></li>
+              <li class="blog_nav_header">Последние посты:</li>
+              {% for post in site.posts limit:5 %}
+              <li><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></li>
+              {% endfor %}
+          </ul>
+        </nav>
+      </div>
+      <div class="content">
+          {{content}}
+      </div>
+    </div>
+  </body>
+</html>

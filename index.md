@@ -1,4 +1,4 @@
 ---
-layout: default
+layout: list
 title: Home
 ---

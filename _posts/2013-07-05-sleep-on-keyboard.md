@@ -3,4 +3,9 @@ layout: post
 title: Что может сделать кот, уснув на клавиатуре
 tags: [Cats]
 ---
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ну много всего короче...
+Каждый, у кого есть одновременно кот и компьютер, сталкивался с ситуацией, когда ваш меховой друг ложился на клавиатуру. Не знаю что их там привлекает, но им там определенно нравится. Я тоже это заметил как-то раз и пришел к выводу что это не просто так.
+
+Для того, чтобы собрать статистику был подключен замечательный сайт **bash.im**, и на нем нашлось много интересного.
+Оказывается кошаки уснув на клавиатуре могут и [доту запустить](http://bash.im/quote/423212), правда игроки из них чуть лучше чем из раков. Отдельные особи могут и [мастерски печатать](http://bash.im/quote/422620). 
+
+Также можно упомянуть о [некрокотах](http://bash.im/quote/420591) и [котэ-админах](http://bash.im/quote/409968). Но не всем котам близка эта тема, есть и [другие](http://bash.im/quote/412893). Но когда кот спит на клавиатуре, он может написать, например, этот текст...
