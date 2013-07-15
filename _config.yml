@@ -1,4 +1,5 @@
 baseurl: /blog
 permalink: /:year/:month/:day/:title
 markdown: rdiscount
+excerpt_separator: "\n\n"
 paginate: 5
