@@ -86,7 +86,7 @@ a:hover {
 	}
 }
 
-.breadcumbs {
+.breadcumbs, .pagination {
 	margin: 2em;
 	padding: 0;
 }
