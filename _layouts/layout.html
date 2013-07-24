@@ -20,7 +20,7 @@
         </header>
         <nav>
           <ul class="blog_nav">
-              <li><a href="#">Про блог</a></li>
+              <li><a href="/about">Про блог</a></li>
               <li class="blog_nav_header">Последние посты:</li>
               {% for post in site.posts limit:5 %}
               <li><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></li>
