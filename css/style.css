@@ -140,3 +140,8 @@ a:hover {
 .post-category-Cats {
 	background: #5aba59;
 }
+
+.highlight {
+	background: #F4F4F4;
+	border: 1px solid #BBB;
+}

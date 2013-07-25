@@ -9,13 +9,15 @@ tags: [angular]
 Возникает желание указать отдельной директиве, что для ее работы нужен скрипт и она должна загрузить его перед работой. Как вариант, для этого можно использовать [RequireJS](http://requirejs.org/), но для него нужно определить модуль по принципу AMD, что не всегда возможно.
 
 В результате было решено написать свой сервис для загрузки, который будет загружать необходимый скрипт, если его еще нет в кеше и вызывать callback после успешной загрузки. Вот код скрипта
-
-	angular.module('script', []).factory('$script', ['$q', '$rootScope', function ($q, $rootScope) {
+	{% highlight javascript %}
+	angular.module('script', [])
+	.factory('$script', ['$q', '$rootScope', function ($q, $rootScope) {
 	    "use strict";
 	    function loadScript(path, callback) {
     		var el = doc.createElement("script");
 			el.onload = el.onreadystatechange = function () {
-			  	if (el.readyState && el.readyState !== "complete" && el.readyState !== "loaded") {
+			  	if (el.readyState && el.readyState !== "complete" && 
+			  		el.readyState !== "loaded") {
 			    	return false;
 			  	}
 			  	el.onload = el.onreadystatechange = null;
@@ -51,29 +53,31 @@ tags: [angular]
 	        }
 	    };
 	}]);
-
+	{% endhighlight %}
 При подключении этого модуля станет доступен сервис $script, с методом `get`, который принимает url скрипта и возвращает обещание, которое выполняется, когда скрипт загружен. При помощи этого сервиса можно, например лениво обернуть jquery-плагин. Попробуем написать директиву-адаптер к плагину [vague.js](http://gianlucaguarini.github.io/vague.js/), который добавляет эффект размытия элементу
-	
-	angular.module('vague', ['script']).directive('blurred', ['$script', function($script) {
+	{% highlight javascript %}	
+	angular.module('vague', ['script'])
+	.directive('blurred', ['$script', function($script) {
 		return function(scope, element, attrs) {
 			var blur = function(blurred) {
-				$script('http://gianlucaguarini.github.io/vague.js/Vague.js').then(function() {
-					var vague = element.Vague({
-						//TODO grab intensity from attribute
-			        	intensity:3
-			    	});
-					blur = function(blurred) {
-						vague[blurred ? 'blur' : 'ublur']();
-					};
-					$scope.on('$destroy', function() {
-						vague.destroy();
+				$script('http://gianlucaguarini.github.io/vague.js/Vague.js')
+					.then(function() {
+						var vague = element.Vague({
+							//TODO grab intensity from attribute
+				        	intensity:3
+				    	});
+						blur = function(blurred) {
+							vague[blurred ? 'blur' : 'ublur']();
+						};
+						$scope.on('$destroy', function() {
+							vague.destroy();
+						});
 					});
-				});
 			}
 			$attrs.$observe('blurred', blur)
 		}
 	}]);
-
+	{% endhighlight %}
 *Позже будет демо*
 
 Таким образом можно подключать компоненты только тогда, когда они нужны. Если пользователь не зайдет на страницу с размытием -- компонент и не загрузится.
