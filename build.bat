@@ -1,1 +1,1 @@
-chcp 65001 && jekyll build
+chcp 65001 && jekyll build %1
