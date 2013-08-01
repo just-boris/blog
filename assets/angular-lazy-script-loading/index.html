@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular &amp; Vague.js demo</title>
+	<link href="http://fonts.googleapis.com/css?family=Noto+Sans:100,400,700&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+	<link href="http://css.cdn.tl/normalize.css" rel="stylesheet">
+	<style type="text/css">
+		html, body {
+			font-family: 'Noto Sans', sans-serif;
+			overflow: hidden;
+		}
+		.container {
+			background: url(2048.jpg) no-repeat center center;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			position: absolute;
+		}
+		.control {
+			position: absolute;
+			width: 200px;
+			height: 100px;
+			top: 50px;
+			left: 50%;
+			margin-left: -100px;
+			color: #FFF;
+			background: rgba(0, 0, 0, 0.7);
+			padding: 10px;
+			text-align: center;
+		}
+		.button {
+			cursor: pointer;
+			width: 100px;
+			height: 35px;
+			line-height: 35px;
+			background: rgba(0, 0, 0, 0.9);
+			margin: 10px auto;
+		}
+		.button.active {
+			background: #E79C0D;
+		}
+	</style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script type="text/javascript" src="scriptService.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-app="blurDemo">
+	<div class="container" blurred="{{blurOn}}"></div>
+	<div class="control">
+		<p>Try to enable blur</p>
+		<div class="button" ng-class="{active:blurOn}" ng-click="blurOn = !blurOn">Toggle blur</div>
+	</div>
+</body>
+</html>
