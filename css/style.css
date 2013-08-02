@@ -148,3 +148,7 @@ a:hover {
 	background: #F4F4F4;
 	border: 1px solid #BBB;
 }
+.highlight pre {
+	word-break: break-word;
+	overflow-x: auto;
+}
