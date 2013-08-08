@@ -10,78 +10,78 @@ tags: [angular, jquery]
 
 В результате было решено создать свою версию загрузчика js-файлов с блекджеком и обещаниями. Получился вот такой сервис:
 {% highlight javascript %}
-	angular.module('script', [])
-	.factory('$script', ['$q', '$rootScope', function ($q, $rootScope) {
-	    "use strict";
-	    //классический кроссбраузерный способ подключить внешний скрипт
-	    function loadScript(path, callback) {
-    		var el = document.createElement("script");
-			el.onload = el.onreadystatechange = function () {
-			  	if (el.readyState && el.readyState !== "complete" && 
-			  		el.readyState !== "loaded") {
-			    	return false;
-			  	}
-			  	// если все загрузилось, то снимаем обработчик и выбрасываем callback
-			  	el.onload = el.onreadystatechange = null;
-			  	if(angular.isFunction(callback)) {
-			  		callback();
-		  		}
-			};
-			el.async = true;
-			el.src = path;
-			document.getElementsByTagName('body')[0].appendChild(el);
-	    }
-	    var loadHistory = [], //кэш загруженных файлов
-	        pendingPromises = {}; //обещания на текущие загруки
-	    return {
-	        get: function(url) {
-	            var deferred = $q.defer();
-	            if(loadHistory.indexOf(url) !== -1) {
-	                deferred.resolve();
-	            }
-	            else if(pendingPromises[url]) {
-	                return pendingPromises[url];
-	            } else {
-	                loadScript(url, function() {
-	                	delete pendingPromises[url];
-                        loadHistory.push(url);
-                        //обязательно использовать `$apply`, чтобы сообщить 
-                        //angular о том, что что-то произошло
-                        $rootScope.$apply(function() {
-                            deferred.resolve();
-                        });
+angular.module('script', [])
+.factory('$script', ['$q', '$rootScope', function ($q, $rootScope) {
+    "use strict";
+    //классический кроссбраузерный способ подключить внешний скрипт
+    function loadScript(path, callback) {
+		var el = document.createElement("script");
+		el.onload = el.onreadystatechange = function () {
+		  	if (el.readyState && el.readyState !== "complete" && 
+		  		el.readyState !== "loaded") {
+		    	return false;
+		  	}
+		  	// если все загрузилось, то снимаем обработчик и выбрасываем callback
+		  	el.onload = el.onreadystatechange = null;
+		  	if(angular.isFunction(callback)) {
+		  		callback();
+	  		}
+		};
+		el.async = true;
+		el.src = path;
+		document.getElementsByTagName('body')[0].appendChild(el);
+    }
+    var loadHistory = [], //кэш загруженных файлов
+        pendingPromises = {}; //обещания на текущие загруки
+    return {
+        get: function(url) {
+            var deferred = $q.defer();
+            if(loadHistory.indexOf(url) !== -1) {
+                deferred.resolve();
+            }
+            else if(pendingPromises[url]) {
+                return pendingPromises[url];
+            } else {
+                loadScript(url, function() {
+                	delete pendingPromises[url];
+                    loadHistory.push(url);
+                    //обязательно использовать `$apply`, чтобы сообщить 
+                    //angular о том, что что-то произошло
+                    $rootScope.$apply(function() {
+                        deferred.resolve();
                     });
-	                pendingPromises[url] = deferred.promise;
-	            }
-	            return deferred.promise;
-	        }
-	    };
-	}]);
+                });
+                pendingPromises[url] = deferred.promise;
+            }
+            return deferred.promise;
+        }
+    };
+}]);
 {% endhighlight %}
 При подключении этого модуля станет доступен сервис $script, с методом `get`, который принимает url скрипта и возвращает обещание, которое выполняется при окончании загрузки скрипта. При помощи этого сервиса можно, например лениво обернуть jquery-плагин и избавиться от загрузки плагина, если он не используется. Для примера напишем директиву-адаптер к плагину [vague.js](http://gianlucaguarini.github.io/vague.js/), который размывает элементы:
 {% highlight javascript %}	
-	angular.module('blurDemo', ['script'])
-	.directive('blurred', ['$script', function($script) {
-		return function(scope, element, attrs) {
-			//дождемся загрузки плагина и активируем его
-			var onPluginReady = function() {
-				//вызовем конструктор
-				var vague = element.Vague({
-					//TODO можно забирать значение свойства из 
-					//другого атрибута, будет удобно
-		        	intensity : 30
-		    	});
-		    	//а теперь свяжемся с атрибут
-				attrs.$observe('blurred', function(blurred) {
-					vague[blurred === 'true' ? 'blur' : 'unblur']();
-				});
-				scope.$on('$destroy', function() {
-					vague.destroy();
-				});
-			}
-			$script.get('http://gianlucaguarini.github.io/vague.js/Vague.js').then(onPluginReady);
+angular.module('blurDemo', ['script'])
+.directive('blurred', ['$script', function($script) {
+	return function(scope, element, attrs) {
+		//дождемся загрузки плагина и активируем его
+		var onPluginReady = function() {
+			//вызовем конструктор
+			var vague = element.Vague({
+				//TODO можно забирать значение свойства из 
+				//другого атрибута, будет удобно
+	        	intensity : 30
+	    	});
+	    	//а теперь свяжемся с атрибут
+			attrs.$observe('blurred', function(blurred) {
+				vague[blurred === 'true' ? 'blur' : 'unblur']();
+			});
+			scope.$on('$destroy', function() {
+				vague.destroy();
+			});
 		}
-	}]);
+		$script.get('http://gianlucaguarini.github.io/vague.js/Vague.js').then(onPluginReady);
+	}
+}]);
 {% endhighlight %}
 
 [Демо-страница]({{site.baseurl}}/assets/angular-lazy-script-loading/)

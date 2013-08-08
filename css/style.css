@@ -151,4 +151,5 @@ a:hover {
 .highlight pre {
 	word-break: break-word;
 	overflow-x: auto;
+	margin: 1em;
 }
