@@ -103,13 +103,12 @@ a:hover {
 }
 
 .pagination a:hover {
-	opacity: 0.6;
+	opacity: 0.7;
 } 
 
 .pagination .page_number {
 	margin: 0 10px;
 	padding: 5px 15px;
-	opacity: 0.7;
 }
 
 .breadcumbs li {
