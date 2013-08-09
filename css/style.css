@@ -91,6 +91,27 @@ a:hover {
 	padding: 0;
 }
 
+.pagination {
+	text-align: center;
+}
+
+.pagination .previous, .pagination .next, .pagination .page_number {
+	background: #808080;
+	padding: 5px 10px;
+	color: #FFF;
+	text-decoration: none;
+}
+
+.pagination a:hover {
+	opacity: 0.6;
+} 
+
+.pagination .page_number {
+	margin: 0 10px;
+	padding: 5px 15px;
+	opacity: 0.7;
+}
+
 .breadcumbs li {
 	list-style: none;
 	display: inline;
@@ -123,7 +144,7 @@ a:hover {
 	margin: 0 0.1em;
 	padding: 0.3em 1em;
 	color: #FFF;
-	background: #999;
+	background: #808080;
 	font-size: 80%;
 	opacity: 1;
 	text-decoration: none;
@@ -132,7 +153,7 @@ a:hover {
 .post-category:hover {
 	color: #FFF;
 	text-decoration: none;
-	opacity: 0.8;
+	opacity: 0.7;
 }
 .post-category-js {
 	background: #DF2D4F;
