@@ -75,6 +75,9 @@ a:hover {
 }
 
 @media (max-width: 767px) {
+	.wrap {
+		display: block;
+	}
 	.sidebar, .content {
 		display: block;
 	}
@@ -167,9 +170,9 @@ a:hover {
 .highlight {
 	background: #F4F4F4;
 	border: 1px solid #BBB;
+	overflow-x: auto;
 }
 .highlight pre {
-	word-break: break-word;
-	overflow-x: auto;
+	white-space: pre;
 	margin: 1em;
 }
