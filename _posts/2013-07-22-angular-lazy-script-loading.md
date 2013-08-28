@@ -59,7 +59,7 @@ angular.module('script', [])
 }]);
 {% endhighlight %}
 При подключении этого модуля станет доступен сервис $script, с методом `get`, который принимает url скрипта и возвращает обещание, которое выполняется при окончании загрузки скрипта. При помощи этого сервиса можно, например лениво обернуть jquery-плагин и избавиться от загрузки плагина, если он не используется. Для примера напишем директиву-адаптер к плагину [vague.js](http://gianlucaguarini.github.io/vague.js/), который размывает элементы:
-{% highlight javascript %}	
+{% highlight javascript %}
 angular.module('blurDemo', ['script'])
 .directive('blurred', ['$script', function($script) {
 	return function(scope, element, attrs) {
