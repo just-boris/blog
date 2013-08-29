@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Красивым стихам - красивые спойлеры</title>
+	<link href="http://fonts.googleapis.com/css?family=Noto+Sans:100,400,700&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+	<link href="http://css.cdn.tl/normalize.css" rel="stylesheet">
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script type="text/javascript" src="articleCut.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-app="cutDemo" ng-controller="AppCtrl">
+	<h1>Красивым стихам - красивые спойлеры</h1>
+	<div ng-repeat="poetry in poetries">
+		<h2>{{poetry.title}}</h2>
+		<p><em>{{poetry.author}}</em></p>
+		<article-cut text="poetry.text"></article-cut>
+	</div>
+</body>
+</html>
