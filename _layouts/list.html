@@ -13,7 +13,7 @@ layout: layout
 {% for post in paginator.posts %}
 <section class="post">
     <header class="post-header">
-        <h1 class="post-title"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></h1>
+        <h1 class="post-title"><a href="{{site.baseurl}}{{post.url}}/">{{post.title}}</a></h1>
         <p class="post-meta">
           <span class="post-date">{{post.date | date: "%d.%m.%y"}}</span>
           {% for tag in post.tags %}
