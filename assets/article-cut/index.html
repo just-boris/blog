@@ -3,17 +3,62 @@
 <head>
 	<title>Красивым стихам - красивые спойлеры</title>
 	<link href="http://fonts.googleapis.com/css?family=Noto+Sans:100,400,700&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-	<link href="http://css.cdn.tl/normalize.css" rel="stylesheet">
+	<link href="http://cdn.jsdelivr.net/normalize/2.1.2/normalize.css" rel="stylesheet">
+	<style type="text/css">
+		.container {
+			width: 960px;
+			margin: 0 auto;
+		}
+		.container h1 {
+			text-align: center;
+		}
+		.poetry {
+			width: 350px;
+			margin: 0 auto;
+			padding: 1em;
+			border-width: 0 0 0 1px;
+			border-color: #FFF;
+			border-style: solid;
+			transition: border-color 0.5s;
+		}
+		.poetry:hover {
+			border-color: #c2c2c2;
+		}
+		.poetry h2 {
+			margin-top: 0;
+		}
+		.collapse {
+			position: relative;
+			height: 0;
+			overflow: hidden;
+			-webkit-transition: height 0.35s ease;
+			-moz-transition: height 0.35s ease;
+			-o-transition: height 0.35s ease;
+			transition: height 0.35s ease;
+		}
+		.btn-collapse {
+			margin-top: 1em;
+		}
+		.btn-expand, .btn-collapse {
+			font-weight: bold;
+		}
+		.btn-expand:hover, .btn-collapse:hover {
+			color: #888;
+		}
+	</style>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
 	<script type="text/javascript" src="articleCut.js"></script>
+	<script type="text/javascript" src="ui-bootstrap-collapse-0.5.0.js"></script>
 	<script type="text/javascript" src="app.js"></script>
 </head>
 <body ng-app="cutDemo" ng-controller="AppCtrl">
-	<h1>Красивым стихам - красивые спойлеры</h1>
-	<div ng-repeat="poetry in poetries">
-		<h2>{{poetry.title}}</h2>
-		<p><em>{{poetry.author}}</em></p>
-		<article-cut text="poetry.text"></article-cut>
+	<div class="container">
+		<h1>Красивым стихам - красивые спойлеры</h1>
+		<div class="poetry" ng-repeat="poetry in poetries">
+			<h2>{{poetry.title}}</h2>
+			<h4>{{poetry.author}}</h4>
+			<article-cut text="poetry.text" expander-text="Показать полностью" collapser-text="Cвернуть"></article-cut>
+		</div>
 	</div>
 </body>
 </html>

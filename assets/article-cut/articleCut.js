@@ -5,7 +5,9 @@ angular.module('articleCut', [])
 	return {
 		restrict: 'EA',
 		scope: {
-			text: '='
+			text: '=',
+			expanderText: '@',
+			collapserText: '@'
 		},
 		templateUrl: '/articleCut.html',
 		link: function(scope, elm, attrs) {
@@ -26,8 +28,9 @@ angular.module('articleCut', [])
 	$templateCache.put('/articleCut.html',
 		'<div>'+
 	 		'<div ng-bind-html-unsafe="begining"></div>'+
-	 		'<div ng-show="ending && !showFull" ng-click="showFull=true">Показать полностью</div>'+
-	 		'<div ng-show="showFull" ng-bind-html-unsafe="ending"></div>'+
+	 		'<div class="btn-expand" ng-show="ending && !showFull" ng-click="showFull=true">{{expanderText}}</div>'+
+	 		'<div collapse="!showFull" ng-bind-html-unsafe="ending"></div>'+
+	 		'<div class="btn-collapse" ng-show="showFull && collapserText" ng-click="showFull=false">{{collapserText}}</div>'+
  		'</div>'
 	)
 });
