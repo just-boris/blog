@@ -65,6 +65,6 @@ module.run(function($templateCache){
 });
 {% endhighlight %}
 
-[Демо страница]({{site.baseurl}}/assets/article-cut/)
+<a class="watch-demo" href="{{site.baseurl}}/assets/article-cut/">Демо страница</a>
 
 В примере были использованы стихи русских классиков и дополнительная директива `collapse`, из библиотеки [ui-bootstrap](http://angular-ui.github.io/bootstrap/#/collapse), которая позволила плавно сворачивать и разворачивать контент. Если красота при разворачивании не нужна, то подойдет и обычный `ng-hide` входящий в комплект AngularJS.

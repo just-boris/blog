@@ -167,6 +167,16 @@ a:hover {
 	background: #5aba59;
 }
 
+a.watch-demo {
+	padding: 5px 10px;
+	background: #808080;
+	color: #FFF;
+	text-decoration: none;
+}
+.watch-demo:hover {
+	opacity: 0.7;
+}
+
 .highlight {
 	background: #F4F4F4;
 	border: 1px solid #BBB;

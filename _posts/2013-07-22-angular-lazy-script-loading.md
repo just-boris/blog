@@ -84,6 +84,6 @@ angular.module('blurDemo', ['script'])
 }]);
 {% endhighlight %}
 
-[Демо-страница]({{site.baseurl}}/assets/angular-lazy-script-loading/)
+<a class="watch-demo" href="{{site.baseurl}}/assets/angular-lazy-script-loading/">Демо страница</a>
 
 Вот так можно подключать компоненты только тогда, когда они нужны. Достаточно удалить директиву `blurred` из атрибутов элемента и дополнительная библиотека перестанет грузиться.
