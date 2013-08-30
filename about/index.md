@@ -1,6 +1,6 @@
 ---
-layout: post
-title: Об этом блоге и обо мне
+layout: page
+title: Про блог
 ---
 ### О чем этот блог
 

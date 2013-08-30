@@ -1,0 +1,94 @@
+---
+layout: page
+title: Мои проекты
+---
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<style type="text/css">
+	.repo {
+		padding: 1em;
+		border-width: 1px 0 1px 0;
+		border-color: #FFF;
+		border-style: solid;
+	}
+	.repo:hover {
+		border-color: #c2c2c2;	
+	}
+	.repo h3, .repo p {
+		margin: 0;
+	}
+	.repo-language {
+		float: right;
+		margin-right: 0.5em;
+	}
+	a.github-repo {
+		color: #000;
+		text-decoration: none;
+	}
+	.filters {
+		overflow: hidden;
+		margin-bottom: 1em;
+	}
+	.pseudolink {
+		border-bottom: 1px dashed #225BAF;
+		color: #225BAF;
+		cursor: pointer;
+	}
+	.pseudolink + .pseudolink {
+		margin-left: 1em;
+	}
+	.pseudolink.active {
+		background: #eee;
+	}
+	.select-lang {
+		float: right;
+	}
+</style>
+{% raw %}
+<div ng-app="homeApp" ng-controller="repoController" class="container">
+	<p>У меня скопилось множество разных проектов и поделок. Наиболее интересные мне и людям я храню на Github и иногда обновляю.</p>
+	<div class="filters">
+		<span class="pseudolink" ng-class="{active:!showForks}"  ng-click="showForks=false">Только свои</span>
+		<span class="pseudolink" ng-class="{active:showForks}" ng-click="showForks=true">Показать форки</span>
+		<select class="select-lang" name="type" ng-model="lang" ng-options="language for language in languages">
+			<option value="">Все языки</option>
+		</select>
+	</div>
+	<div class="repo" ng-repeat = "repo in repos | filter:filterRepos">
+		<div class="repo-language"><em>{{repo.language}}</em></div>
+		<h3>
+			<ng-switch on="hasHomepage(repo)">
+				<a ng-switch-when="true" ng-href="{{repo.homepage}}">{{repo.name}}</a>
+				<span ng-switch-when="false">{{repo.name}}</span>
+			</ng-switch>
+			<a class="github-repo" title="Код на Github" href="{{repo.html_url}}"><i class="icon-github"></i></a>
+			<i class="icon-code-fork" ng-show="repo.fork" title="Форкнутый репозиторий"></i>
+		</h3>
+		<p>{{repo.description}}</p>
+	</div>
+</div>
+{% endraw %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+<script type="text/javascript">
+	angular.module('homeApp', []).controller('repoController', function($scope, $http, $timeout, $filter) {
+		function collectLanguages(repos) {
+			var result = [];
+			repos.forEach(function(repo) {
+				if(result.indexOf(repo.language) === -1)  {
+					result.push(repo.language);
+				}
+			});
+			return result;
+		}
+		$scope.hasHomepage = function(repo) {
+			return repo.homepage !== null && repo.homepage !== "";
+		};
+		$scope.filterRepos = function(item) {
+			return ($scope.showForks || !item.fork) &&
+				(!$scope.lang || item.language === $scope.lang);
+		};
+		$http.get('https://api.github.com/users/just-boris/repos').then(function(response) {
+			$scope.repos = response.data
+			$scope.languages = collectLanguages($scope.repos);
+		});
+	});
+</script>
