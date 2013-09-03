@@ -63,7 +63,7 @@ title: Мои проекты
 				<a ng-switch-when="true" ng-href="{{repo.homepage}}">{{repo.name}}</a>
 				<span ng-switch-when="false">{{repo.name}}</span>
 			</ng-switch>
-			<a class="github-repo" title="Код на Github" href="{{repo.html_url}}"><i class="icon-github"></i></a>
+			<a class="github-repo" title="Код на Github" ng-href="{{repo.html_url}}"><i class="icon-github"></i></a>
 			<i class="icon-code-fork" ng-show="repo.fork" title="Форкнутый репозиторий"></i>
 		</h3>
 		<p>{{repo.description}}</p>
