@@ -25,7 +25,7 @@ layout: layout
     <div class="post-description">
         {{post.excerpt}}
     </div>
-    <div class="article-cut"><a href="{{site.baseurl}}{{post.url}}">Читать далее...</a></div>
+    <div class="article-cut"><a href="{{site.baseurl}}{{post.url}}/">Читать далее...</a></div>
 </section>
 {% endfor %}
 
@@ -34,14 +34,14 @@ layout: layout
     {% if paginator.previous_page == 1 %}
       <a href="{{site.baseurl}}/" class="previous">&lt;&lt;</a>
     {% else %}
-      <a href="{{site.baseurl}}/page{{ paginator.previous_page }}" class="previous">&lt;&lt;</a>
+      <a href="{{site.baseurl}}/page{{ paginator.previous_page }}/" class="previous">&lt;&lt;</a>
     {% endif %}
   {% else %}
     <span class="previous">&lt;&lt;</span>
   {% endif %}
   <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
   {% if paginator.next_page %}
-    <a href="{{site.baseurl}}/page{{ paginator.next_page }}" class="next">&gt;&gt;</a>
+    <a href="{{site.baseurl}}/page{{ paginator.next_page }}/" class="next">&gt;&gt;</a>
   {% else %}
     <span class="next ">&gt;&gt;</span>
   {% endif %}
