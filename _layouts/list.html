@@ -1,15 +1,12 @@
 ---
 layout: layout
 ---
-<ul class="breadcumbs">
-    <li><a href="/">Главная</a></li>
-    <li class="separator">></li>
-    {% if paginator.page == 1 %}
-      <li class="active">Последние посты</li>
-    {% else %}
-      <li class="active">Посты</li>
-    {% endif %}
-</ul>
+{% if paginator.page == 1 %}
+  {% assign pageName = 'Последние посты' %}
+{% else %}
+  {% assign pageName = 'Посты, страница ' | append:paginator.page %}
+{% endif %}
+{% include topmenu.html pageName = pageName %}
 {% for post in paginator.posts %}
 <section class="post">
     <header class="post-header">

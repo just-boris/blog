@@ -15,6 +15,10 @@ a:hover {
 	text-decoration: underline;
 }
 
+.pull-right {
+	float: right;
+}
+
 .wrap {
 	display: table;
 	height: 100%;
@@ -89,8 +93,8 @@ a:hover {
 	}
 }
 
-.breadcumbs, .pagination {
-	margin: 2em;
+.topmenu, .pagination, .post {
+	margin: 1em 2em;
 	padding: 0;
 }
 
@@ -114,13 +118,24 @@ a:hover {
 	padding: 5px 15px;
 }
 
+.breadcumbs {
+	padding: 0;
+}
+
 .breadcumbs li {
 	list-style: none;
 	display: inline;
 }
 
-.post {
-	margin: 2em;
+.rss:before {
+	width: 14px;
+	height: 14px;
+	margin-right: 3px;
+	position: relative;
+	top: 1px;
+	background: url(../img/rss.png);
+	display: inline-block;
+	content: '';
 }
 
 .post-title {
