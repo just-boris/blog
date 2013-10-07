@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Recursive reviews</title>
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,700" rel="stylesheet" type="text/css">
+	<link href="http://cdn.jsdelivr.net/normalize/2.1.2/normalize.css" rel="stylesheet">
+	<link href="http://semantic-ui.com/build/packaged/css/semantic.min.css" rel="stylesheet">
+	<style type="text/css">
+		body {
+			font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+			color: #555555;
+		}
+		.container {
+			width: 40em;
+			margin: 2em auto;
+		}
+		a {
+			color: #009FDA;
+			text-decoration: none;
+		}
+	</style>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-app="recursiveDemo">
+	<div class="container ui comments" ng-controller="ReviewsCtrl">
+		<h1>Recursive reviews</h1>
+		<p>Динамический и древовидный список комментариев на Angular JS без использования сторонних библиотек. Можно поучавствовать в философской дискуссии.</p>
+		<div class="comment" ng-repeat="review in reviews">
+			<div ng-include="'review.html'"></div>
+		</div>
+		<p><a href="#reviewForm" ng-click="setParentReview()">Добавить комментарий</a></p>
+		<form id="reviewForm" class="ui reply form" ng-submit="addReview()">
+			<h3 ng-show="parentReview">Ответить {{parentReview.author}}</h3>
+			<h3 ng-hide="parentReview">Комментировать</h3>
+			<div class="field">
+				<label for="reviewUsername">Ваше имя:</label>
+				<input id="reviewUsername" type="text" required ng-model="name">
+			</div>
+			<div class="field">
+				<label for="reviewText">Текст:</label>
+				<textarea id="reviewText" ng-model="reviewText" required></textarea>
+			</div>
+			<button class="ui fluid blue labeled submit icon button">
+            	<i class="icon edit"></i> Add Reply
+          	</button>
+		</form>
+	</div>
+	<script type="text/ng-template" id="review.html">
+		<p><a class="author">{{review.author}}</a></p>
+		<p class="text">{{review.text}}</p>
+		<p class="actions"><a href="#reviewForm" class="reply" ng-click="setParentReview(review)">Ответить</a></p>
+		<div class="ui comments">
+			<div class="comment" ng-include="'review.html'" ng-repeat="review in review.reviews"></div>
+		</div>
+	</script>
+</body>
+</html>
