@@ -17,6 +17,6 @@ angular.module('blurDemo', ['script'])
 					vague.destroy();
 				});
 			}
-			$script.get('http://gianlucaguarini.github.io/vague.js/Vague.js').then(onPluginReady);
+			$script.get('http://gianlucaguarini.github.io/Vague.js/Vague.js').then(onPluginReady);
 		}
 	}]);
