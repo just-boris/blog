@@ -3,7 +3,8 @@ html, body {
 }
 
 body {
-	font-family: 'Noto Sans', sans-serif;
+	font-family: 'PT Sans', sans-serif;
+	line-height: 1.5;
 }
 
 a {
