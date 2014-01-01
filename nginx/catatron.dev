@@ -1,0 +1,14 @@
+server {
+    listen       80;
+    server_name  catatron.dev;
+
+    location / {
+        root   D:/Coding/catatron/_site/;
+        try_files $uri $uri/index.html @subsite;
+    }
+
+    location @subsite {
+    	root   D:/Coding/;
+    	index  index.html;
+    }
+}
