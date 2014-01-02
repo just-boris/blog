@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read media queries from javasript</title>
+    <link href="http://yandex.st/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .topbar {
+            margin: 15px auto;
+            position: relative;
+        }
+        .image {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .mid_x {
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .image, .image>div {
+            transition-property: left, top, width, height, background-color;
+            transition-duration: 0.9s;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+        }
+        .overlay .glyphicon {
+            position: absolute;
+            font-size: 40px;
+        }
+        .overlay .glyphicon-chevron-up {
+            top: 2.5em;
+            left: 50%;
+        }
+        .overlay .glyphicon-chevron-down {
+            left: 50%;
+            bottom: 1em;
+            top: auto;
+        }
+        .overlay .glyphicon-chevron-left {
+            top: 50%;
+            left: 2em;
+        }
+        .overlay .glyphicon-chevron-right {
+            top: 50%;
+            right: 1em;
+            left: auto;
+        }
+        .overlay__message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: rgba(155, 155, 155, 0.6);
+            padding: 2em;
+            border-radius: 7px;
+        }
+        .overlay__hide {
+            cursor: pointer;
+            border-bottom: 1px dashed #fff;
+        }
+    </style>
+    <link href="ipod-shuffle.css" rel="stylesheet">
+    <link href="iphone.css" rel="stylesheet">
+    <link href="ipad.css" rel="stylesheet">
+    <link href="imac.css" rel="stylesheet">
+</head>
+<body>
+<div class="topbar container text-center">
+    <h1 class="topbar__message"></h1>
+</div>
+<div class="image">
+    <div class="button"></div>
+    <div class="bottom2"></div>
+    <div class="bottom1"></div>
+    <div class="bottom3"></div>
+    <div class="home apple mid_x"></div>
+    <div class="webcam mid_x"></div>
+    <div class="screen"></div>
+</div>
+<div class="overlay">
+    <div class="glyphicon mid_x glyphicon-chevron-up"></div>
+    <div class="glyphicon mid_x glyphicon-chevron-down"></div>
+    <div class="glyphicon mid_x glyphicon-chevron-left"></div>
+    <div class="glyphicon mid_x glyphicon-chevron-right"></div>
+    <div class="mid_x overlay__message text-center">
+        <p>Try to resize the window to see how the gadget changes,<br> or press 'a' to toggle animation</p>
+        <span class="overlay__hide">Ok!</span>
+    </div>
+</div>
+<script type="text/javascript" src="http://yandex.st/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="registerOnSize.js"></script>
+<script type="text/javascript">
+    (function ($) {
+        function setSize(size) {
+            $image.prop('class', 'image '+sizeClasses[size]);
+            $message.text(messages[size]);
+        }
+        var $image = $('.image'),
+            $message = $('.topbar__message'),
+            messages = {
+                xs: 'iPod Shuffle (xs)', sm: 'iPhone (sm)', md: 'iPad (md)', lg: 'iMac (lg)'
+            },
+            sizeClasses = {
+                xs: 'iPod_shuffle', sm: 'iPhone_white', md: 'iPad_white', lg: 'iMac'
+            }, currentSize;
+        Object.keys(sizeClasses).forEach(function(size) {
+            registerOnSize(size, function () {
+                setSize(size);
+                currentSize = size;
+            });
+        });
+        function AnimSwitcher($window, sizes) {
+            this.sizes = sizes;
+            $window.on('keydown', function(event) {
+                if(event.keyCode === 65) {
+                    this.onKeypress();
+                }
+            }.bind(this))
+        }
+        AnimSwitcher.prototype.interval = 1200;
+        AnimSwitcher.prototype.onTimeout = function() {
+            this.index++;
+            this.index = this.index % this.sizes.length;
+            setSize(this.sizes[this.index]);
+            this.animInterval = setTimeout(this.onTimeout.bind(this), this.interval + (this.index === 1 ? 300: 0));
+        };
+        AnimSwitcher.prototype.onKeypress = function() {
+            if(this.animInterval) {
+                clearInterval(this.animInterval);
+                setSize(this.initSize);
+                delete this.animInterval;
+            }
+            else {
+                this.animInterval = setTimeout(this.onTimeout.bind(this), this.interval);
+                this.initSize = currentSize;
+                this.index = this.sizes.indexOf(currentSize);
+            }
+        };
+        new AnimSwitcher($(window), ['xs', 'sm', 'md', 'lg']);
+    })(jQuery);
+    (function($) {
+        $('.overlay').click(function() {
+            $('.overlay').fadeOut();
+        });
+    })(jQuery)
+</script>
+</body>
+</html>

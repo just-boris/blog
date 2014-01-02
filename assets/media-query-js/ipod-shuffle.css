@@ -1,0 +1,32 @@
+.iPod_shuffle {
+    width: 190px;
+    height: 190px;
+    border-radius: 20px;
+    background-color: #f1f1f2;
+}
+
+.iPod_shuffle  .button {
+    background-color: rgb(63, 63, 64);
+    left: 74%;
+    top: -6px;
+    width: 12%;
+    height: 6px;
+}
+
+.iPod_shuffle .home {
+    border-radius: 50%;
+    background-color: #9fa1a3;
+    left: 50%;
+    top: 50%;
+    width: 145px;
+    height: 145px;
+}
+
+.iPod_shuffle .webcam {
+    border-radius: 50%;
+    background-color: #e6e7e7;
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+}

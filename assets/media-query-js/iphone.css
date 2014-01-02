@@ -1,0 +1,49 @@
+.iPhone_white  {
+    width: 265px;
+    height: 500px;
+    border-radius: 20px;
+    background-color: #f1f1f2;
+}
+
+.iPhone_white  .button {
+    background-color: rgb(63, 63, 64);
+    left: 74%;
+    top: -6px;
+    width: 12%;
+    height: 6px;
+}
+
+.iPhone_white .webcam {
+    border-radius: 50%;
+    background-color: #57585a;
+    left: 50%;
+    top: 5%;
+    width: 12px;
+    height: 12px;
+}
+
+.iPhone_white .home {
+    border-radius: 50%;
+    background-color: rgb(230, 231, 231);
+    left: 50%;
+    top: 92%;
+    width: 45px;
+    height: 45px;
+}
+
+.iPhone_white .screen {
+    background-color: rgb(87, 88, 90);
+    left: 5%;
+    top: 10%;
+    width: 90%;
+    height: 75%;
+}
+
+.iPhone_white .bottom1 {
+    width: 100%;
+    height: 15%;
+    top: 70%;
+    left: 0;
+    border-radius: 0 0 15px 15px;
+    background: #f1f1f2;
+}
