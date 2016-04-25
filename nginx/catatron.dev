@@ -1,14 +1,23 @@
 server {
     listen       80;
-    server_name  catatron.dev;
+    server_name  localhost catatron.dev;
+
+    ## Compression
+    gzip              on;
+    gzip_buffers      16 8k;
+    gzip_comp_level   4;
+    gzip_http_version 1.0;
+    gzip_min_length   1280;
+    gzip_types        text/plain text/css application/javascript text/xml application/xml application/xml+rss text/javascript image/x-icon image/bmp;
+    gzip_vary         on;
 
     location / {
-        root   D:/Coding/catatron/_site/;
+        root  /Users/just-boris/coding/just-boris.github.io/_site/;
         try_files $uri $uri/index.html @subsite;
     }
 
     location @subsite {
-    	root   D:/Coding/;
+    	root   /Users/just-boris/coding;
     	index  index.html;
     }
 }
