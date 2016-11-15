@@ -1,6 +1,10 @@
 server {
-    listen       80;
-    server_name  localhost catatron.dev;
+    listen 80;
+    listen 443 default_server ssl;
+    server_name  catatron.dev;
+
+    ssl_certificate     /Users/just-boris/coding/blog/nginx/catatron.dev.cert;
+    ssl_certificate_key /Users/just-boris/coding/blog/nginx/catatron.dev.key;
 
     ## Compression
     gzip              on;
